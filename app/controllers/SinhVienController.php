@@ -41,13 +41,13 @@ class SinhVienController{
                 include '/xampp/htdocs/website/KTNNPTUD/app/views/sinhviens/add.php';
             }
             else{
-                header('Location: /xampp/htdocs/website/KTNNPTUD/app/views/sinhviens/show.php');
+                header('Location: index.php');
             }
         }
     }
 
-    function edit($id){
-        $sinhvien = $this->sinhvienModel->getSinhVienByMaSV($id);
+    function edit(){
+        $sinhvien = $this->sinhvienModel->getSinhVienByMaSV($_GET['id']);
         $nganhhocs = (new NganhHocModel($this->db))->getNganhHocs();
 
         if($sinhvien)
@@ -75,9 +75,9 @@ class SinhVienController{
         }
     }
 
-    function delete($id){
-        if($this->sinhvienModel->deleteSinhVien($id)){
-            header('Location: /xampp/htdocs/website/KTNNPTUD/app/views/sinhviens/show.php');
+    function delete(){
+        if($this->sinhvienModel->deleteSinhVien($_GET['id'])){
+            header('Location: index.php');
         }else{
             echo "Đã xảy ra lỗi khi xóa sinh viên";
         }

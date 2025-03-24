@@ -1,22 +1,24 @@
 <?php
 class Router {
     public static function route($url) {
-        if ($url == "" || $url == "index") {
-            require_once "../app/controllers/SinhVienController.php";
-            $controller = new SinhVienController();
-            $controller->index();
-        } elseif ($url == "add") {
-            require_once "../app/controllers/SinhVienController.php";
-            $controller = new SinhVienController();
-            $controller->add();
-        }
-        elseif ($url == "edit" && isset($_GET['id'])) {
-            require_once "../app/controllers/SinhVienController.php";
-            $controller = new SinhVienController();
-            $controller->edit($_GET['id']);
-        }
-        else {
-            echo "404 - Page Not Found";
+
+        $controller = $_GET['controller'] ?? 'sinhVien';
+        $action = $_GET['action'] ?? 'index';
+
+        $controllerFile = "../app/controllers/" . ucfirst($controller) . "Controller.php";
+
+        if (file_exists($controllerFile)) {
+            require_once $controllerFile;
+            $controllerClass = ucfirst($controller) . "Controller";
+            $controllerInstance = new $controllerClass();
+
+            if (method_exists($controllerInstance, $action)) {
+                $controllerInstance->$action();
+            } else {
+                echo "404 - Action Not Found";
+            }
+        } else {
+            echo "404 - Controller Not Found";
         }
     }
 }

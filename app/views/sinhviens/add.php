@@ -12,7 +12,7 @@
     </div>
 <?php endif; ?>
 
-<form method="POST" action="/webbanhang/Product/save" onsubmit="return validateForm()" novalidate>
+<form method="POST" action="index.php?controller=sinhVien&action=save" onsubmit="return validateForm()" novalidate>
     <div class="form-group">
         <label for="masv">Mã sinh viên:</label>
         <input type="text" id="masv" name="masv" class="form-control" required/>
@@ -28,7 +28,7 @@
         <input type="text" id="gioitinh" name="gioitinh" class="form-control"/>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="ngaysinh">Ngày sinh:</label>
         <input type="date" id="ngaysinh" name="ngaysinh" class="form-control"/>
     </div>
@@ -36,7 +36,7 @@
     <div class="form-group">
         <label for="hinh">Hình:</label>
         <input type="file" id="hinh" name="hinh" class="form-control"/>
-    </div>
+    </div> -->
 
     <div class="form-group">
         <label for="manganh">Ngành học:</label>

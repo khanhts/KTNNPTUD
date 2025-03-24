@@ -32,15 +32,15 @@ class SinhVienModel{
         if(empty($masv)){
             $error['masv'] = 'Mã sinh viên không được để trống';
         }
-        else{
-            $query = "SELECT * FROM " . $this->table_name . " WHERE MaSV = :MaSV";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':MaSV', $masv);
-            $stmt->execute();
-            if($stmt->fetch(PDO::FETCH_OBJ)){
-                $error['masv'] = 'Đã tồn tại sinh viên này';
-            }
-        }
+        // else{
+        //     $query = "SELECT * FROM " . $this->table_name . " WHERE MaSV = :MaSV";
+        //     $stmt = $this->conn->prepare($query);
+        //     $stmt->bindParam(':MaSV', $masv);
+        //     $stmt->execute();
+        //     if($stmt->fetch(PDO::FETCH_OBJ)){
+        //         $error['masv'] = 'Đã tồn tại sinh viên này';
+        //     }
+        // }
         if(empty($hoten)){
             $error['hoten'] = 'Họ và tên sinh viên không được để trống';
         }
